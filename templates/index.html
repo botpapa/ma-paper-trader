@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MA trader</title>
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>What if you traded only with Moving Average?</h1>
+    <blockquote>
+        This application imitates paper trading for you. It is making a purchase every time price of the given asset touches the given MA from the support side and then either takes profit or loss regarding the given parameters.
+        <br>If the price is below the MA the purchase happens on the close of the candle that breaks the MA.<br>
+        <a href="https://github.com/botpapa/simple-ma-paper-trader">Github</a>
+    </blockquote>
+    <a href="/?view=example">
+        <button>
+            See example
+        </button>
+    </a>
+    <a href="/?view=random">
+        <button>
+            See random calculation
+        </button>
+    </a>
+    <br><br>
+
+    <h2>Fill in the data to test the script:</h2>
+    <br>
+
+    <!-- f2c -->
+    <form method="post">
+        <p>Pick the trading pair <i>(for example: BTCUSDT)</i></p>
+        <input type="text" name="pair" placeholder="trading pair"><br>
+
+        <p>Set up the timeframe <i>(pick from 5m, 15m, 1h, 4h, 1d, 1w, 1M)</i></p>
+        <input type="text" name="timeframe" placeholder="timeframe"><br>
+
+        <p>How many candles you want to include <i>(5000 max)</i></p>
+        <input type="text" name="candles" placeholder="# of candles"><br>
+
+        <p>Choose period for your MA <i>(for example: 50)</i></p>
+        <input type="text" name="ma" placeholder="MA period"><br>
+
+        <p>Choose take-profit percentage after which the order will be closed</p>
+        <input type="text" name="tp" placeholder="take-profit %"><br>
+
+        <p>Choose stop-loss percentage after which the order will be closed</p>
+        <input type="text" name="sl" placeholder="stop-loss %"><br>
+
+        <br><input type="submit" value="Calculate">
+    </form>
+</body>
+</html>

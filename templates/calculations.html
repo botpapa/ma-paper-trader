@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MA trader | Calculations</title>
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <h1>Your trading calculations:</h1>
+    <blockquote>
+        Calculations are done with the following data:<br>
+        Pair: {{ data.calculations_data.pair }}<br>
+        Timeframe: {{ data.calculations_data.timeframe }}<br>
+        Candles #: {{ data.calculations_data.candles }}<br>
+        MA diapason: {{ data.calculations_data.ma }}<br>
+        TP: {{ data.calculations_data.tp }}%<br>
+        SL: {{ data.calculations_data.sl }}%<br>
+    </blockquote>
+    <br><br>
+    <h1>Your would have {{ data.result_text }} with total of {{ data.trades_number }} trades</h1>
+
+    <img src="{{ data.chart_image_path }}">
+
+    <table>
+        <tr>
+            <th>Action</th>
+            <th>Candle #</th>
+            <th>Entry price</th>
+            <th>Closing price</th>
+            <th>Result</th>
+        </tr>
+    {% for item in data.trades %}
+    {% if item.position_action == "open" %}
+    <TR>
+       <TD class="c2">{{item.position_action}}</TD>
+       <TD class="c2">{{item.candle_number}}</TD>
+       <TD class="c3">{{item.entry_price}}</TD>
+       <TD class="c4"></TD>
+       <TD class="c5"></TD>
+    </TR>
+    {% elif item.position_action == "close" %}
+    <TR>
+       <TD class="c2">{{item.position_action}}</TD>
+       <TD class="c2">{{item.candle_number}}</TD>
+       <TD class="c3"></TD>
+       <TD class="c4">{{item.close_price}}</TD>
+       <TD class="c5">{{item.result}}</TD>
+    </TR>
+    {% endif %}
+    {% endfor %}
+    </table>
+
+    <a href="/">
+      <button>
+        Start over
+      </button>
+    </a>
+<br><br><br>
+<blockquote>
+    <a href="https://github.com/botpapa/simple-ma-paper-trader">Github</a>
+</blockquote>
+</body>
+</html>
